@@ -3,5 +3,3 @@ services:
     build: .
     ports:
       - "5000:5000"
-    environment:
-      - LD_LIBRARY_PATH=/app
