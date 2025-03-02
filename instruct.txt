@@ -1,0 +1,21 @@
+# Инициализация
+curl -X POST http://localhost:5000/initialize \
+  -H "Content-Type: application/json" \
+  -d '{"grid_size": 10, "time_step": 0.01, "diffusivity": 0.1}'
+
+# Установка граничных условий
+curl -X POST http://localhost:5000/set_boundary \
+  -H "Content-Type: application/json" \
+  -d '{"face": 0, "temperature": 100}'
+
+# Запуск симуляции
+curl -X POST http://localhost:5000/run \
+  -H "Content-Type: application/json" \
+  -d '{"iterations": 100}'
+
+# Получение температуры
+curl --location --request GET 'http://localhost:5000/temperature' \
+--header 'Content-Type: application/json' \
+--data '{
+	"grid_size":10
+}'
